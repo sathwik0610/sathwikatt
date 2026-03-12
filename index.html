@@ -1,46 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sathwik Attendance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sathwik AIML 2B Attendance</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-Sathwik AIML 2B Attendance
+Welcome back Sathwik 👋
+<br>
+AIML 2B Attendance Tracker
 </header>
+
+<div class="container">
+
+<h2>Dashboard</h2>
 
 <div class="grid">
 
 <div class="card">
-<h2 id="percent"></h2>
+<h3 id="percent"></h3>
 Attendance %
 </div>
 
 <div class="card">
-<h2 id="present"></h2>
+<h3 id="present"></h3>
 Present
 </div>
 
 <div class="card">
-<h2 id="absent"></h2>
+<h3 id="absent"></h3>
 Absent
 </div>
 
 <div class="card">
-<h2 id="total"></h2>
+<h3 id="total"></h3>
 Total Classes
 </div>
 
 </div>
 
-<h2 style="text-align:center">Mark Attendance</h2>
+<h2>Mark Attendance</h2>
 
-<div class="card">
+<div class="subject">
+Operating Systems
+<br>
 <button onclick="markPresent()">Present</button>
 <button onclick="markAbsent()">Absent</button>
+</div>
+
+<div class="subject">
+Web Technologies
+<br>
+<button onclick="markPresent()">Present</button>
+<button onclick="markAbsent()">Absent</button>
+</div>
+
+<div class="subject">
+Computer Architecture
+<br>
+<button onclick="markPresent()">Present</button>
+<button onclick="markAbsent()">Absent</button>
+</div>
+
+<div class="subject">
+Design Thinking
+<br>
+<button onclick="markPresent()">Present</button>
+<button onclick="markAbsent()">Absent</button>
+</div>
+
+<h2>Attendance History</h2>
+
+<div id="history"></div>
+
 </div>
 
 <script src="script.js"></script>
