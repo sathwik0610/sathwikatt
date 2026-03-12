@@ -1,35 +1,72 @@
-body{
-margin:0;
-font-family:Arial;
-background:#071a2c;
-color:white;
+let present = localStorage.getItem("present") || 182;
+let total = localStorage.getItem("total") || 257;
+let history = JSON.parse(localStorage.getItem("history")) || [];
+
+present = parseInt(present);
+total = parseInt(total);
+
+function update(){
+
+let absent = total - present;
+let percent = (present/total)*100;
+
+document.getElementById("present").innerText = present;
+document.getElementById("absent").innerText = absent;
+document.getElementById("total").innerText = total;
+document.getElementById("percent").innerText = percent.toFixed(2)+"%";
+
+localStorage.setItem("present",present);
+localStorage.setItem("total",total);
+
+showHistory();
 }
 
-header{
-text-align:center;
-padding:20px;
-font-size:22px;
+function markPresent(){
+
+present++;
+total++;
+
+addHistory("Present");
+
+update();
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-padding:20px;
+function markAbsent(){
+
+total++;
+
+addHistory("Absent");
+
+update();
 }
 
-.card{
-background:#0e2d4f;
-padding:20px;
-border-radius:10px;
-text-align:center;
+function addHistory(status){
+
+let date = new Date().toLocaleDateString();
+
+history.push(date + " - " + status);
+
+localStorage.setItem("history",JSON.stringify(history));
 }
 
-button{
-padding:10px;
-margin:5px;
-border:none;
-border-radius:6px;
-background:#00ffd0;
-font-weight:bold;
+function showHistory(){
+
+let div = document.getElementById("history");
+
+div.innerHTML="";
+
+history.slice().reverse().forEach(item=>{
+
+let el=document.createElement("div");
+
+el.className="historyItem";
+
+el.innerText=item;
+
+div.appendChild(el);
+
+});
+
 }
+
+update();
